@@ -67,22 +67,25 @@ $(document).ready(function() {
     var toppings = getToppings();
     var premium = getPremium();
     var crust = $('input:radio[name="crustradio"]:checked').val();
-    var newPizza = new Pizza(name, size, toppings, premium, crust);
+    if (name === "") {
+      alert("Please enter a name for your pizza.")
+      return;
+    } else {
+      var newPizza = new Pizza(name, size, toppings, premium, crust);
 
-    $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + "</span></li>");
-    $(".pizza").last().click(function() {
-      $("#show-pizza").show();
-      $(".pizza-size").text(newPizza.pizzaSize);
-      $(".toppings-list").text(arrayToString(newPizza.toppings));
-      $(".premium-list").text(arrayToString(newPizza.premiumToppings));
-      $(".pizza-crust").text(newPizza.crust);
-      $(".pizza-price").text("$" + newPizza.price().toFixed(2));
-    });
+      $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + "</span></li>");
+      $(".pizza").last().click(function() {
+        $("#show-pizza").show();
+        $(".pizza-size").text(newPizza.pizzaSize);
+        $(".toppings-list").text(arrayToString(newPizza.toppings));
+        $(".premium-list").text(arrayToString(newPizza.premiumToppings));
+        $(".pizza-crust").text(newPizza.crust);
+        $(".pizza-price").text("$" + newPizza.price().toFixed(2));
+      });
 
-    $("input#pizza-name").val("");
-    $("input.regular").attr('checked', false);
-    $("input.premium").attr('checked', false);
-
-
+      $("input#pizza-name").val("");
+      $("input.regular").attr('checked', false);
+      $("input.premium").attr('checked', false);
+    }
   });
 });
