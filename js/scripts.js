@@ -73,7 +73,7 @@ $(document).ready(function() {
     } else {
       var newPizza = new Pizza(name, size, toppings, premium, crust);
 
-      $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + "</span></li>");
+      $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + " - $" + newPizza.price().toFixed(2) +  "</span></li>");
       $(".pizza").last().click(function() {
         $("#show-pizza").show();
         $(".pizza-size").text(newPizza.pizzaSize);

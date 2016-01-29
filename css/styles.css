@@ -19,3 +19,8 @@ h1 {
 .pizza:hover {
   text-decoration: underline;
 }
+
+li {
+  font-size: 1.3em;
+  font-weight: bold;
+}
