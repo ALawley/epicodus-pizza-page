@@ -56,12 +56,20 @@ var getPremium = function() {
 }
 
 var arrayToString = function(array) {
-  var outputString = ""
+  var outputString = "";
   array.forEach(function(element) {
     outputString += element + ", "
   });
   outputString = outputString.slice(0, -2);
   return outputString;
+}
+
+var stringToArray = function(str) {
+  return str.split(" ");
+}
+
+var textGrab = function(element) {
+  return $(element).text();
 }
 
 $(document).ready(function() {
@@ -78,12 +86,12 @@ $(document).ready(function() {
       return;
     } else {
       var newPizza = new Pizza(name, size, toppings, premium, crust);
-
       newOrder.total += newPizza.price();
       newOrder.pizzas += 1;
 
-      $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + " - $" + newPizza.price().toFixed(2) +  "</span></li>");
+      $("ul#pizzas").append("<li class='pizza'><span>" + newPizza.pizzaName + " - $" + newPizza.price().toFixed(2) +  "</span></li>");
       $(".pizza").last().click(function() {
+        $(this).addClass("active").siblings().removeClass("active");
         $("#show-pizza").show();
         $(".pizza-size").text(newPizza.pizzaSize);
         $(".toppings-list").text(arrayToString(newPizza.toppings));
@@ -99,5 +107,13 @@ $(document).ready(function() {
       $("input.regular").attr('checked', false);
       $("input.premium").attr('checked', false);
     }
+  });
+  $("#pizza-remove").click(function() {
+    $(".active").remove();
+    newOrder.pizzas -= 1;
+    newOrder.total -= parseInt($(".pizza-price").text().slice(1));
+    $(".order-count").text(newOrder.pizzas);
+    $(".order-total").text("$" + newOrder.total.toFixed(2));
+    $("#show-pizza").hide();
   });
 });
