@@ -119,7 +119,7 @@ $(document).ready(function() {
   $("#pizza-remove").click(function() {
     $(".active").remove();
     newOrder.pizzas -= 1;
-    newOrder.total -= parseInt($(".pizza-price").text().slice(1));
+    newOrder.total -= parseFloat($(".pizza-price").text().slice(1)); //this looks messy, but basically pulls text from the info section for the price, removes the "$" at the start, and converts it to a number so we know how much to decrease the total by.
     $(".order-count").text(newOrder.pizzas);
     $(".order-total").text("$" + newOrder.total.toFixed(2));
     $("#show-pizza").hide();
