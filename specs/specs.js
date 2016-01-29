@@ -60,3 +60,9 @@ describe('Pizza', function() {
     expect(testPizza.price()).to.equal(16);
   });
 });
+
+describe("arrayToString", function () {
+  it("concatenates an array into a string with each element separated by a comma and a space", function () {
+    expect(arrayToString(["apple", "banana", "orange"])).to.equal("apple, banana, orange")
+  });
+});
