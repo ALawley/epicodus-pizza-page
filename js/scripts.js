@@ -33,3 +33,56 @@ Pizza.prototype.price = function() {
   pizzaPrice = sizePrice + toppingPrice + crustPrice;
   return pizzaPrice;
 }
+
+var getToppings = function() {
+  var allToppings = [];
+  $(".regular:checked").each(function() {
+    allToppings.push($(this).val());
+  })
+  return allToppings;
+}
+
+var getPremium = function() {
+  var allPremium = [];
+  $(".premium:checked").each(function() {
+    allPremium.push($(this).val());
+  })
+  return allPremium;
+}
+
+var arrayToString = function(array) {
+  var outputString = ""
+  array.forEach(function(element) {
+    outputString += element + ", "
+  });
+  outputString = outputString.slice(0, -2);
+  return outputString;
+}
+
+$(document).ready(function() {
+  $("form#orderform").submit(function(event) {
+    event.preventDefault();
+    var name = $("input#pizza-name").val();
+    var size = $('input:radio[name="sizeradio"]:checked').val();
+    var toppings = getToppings();
+    var premium = getPremium();
+    var crust = $('input:radio[name="crustradio"]:checked').val();
+    var newPizza = new Pizza(name, size, toppings, premium, crust);
+
+    $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + "</span></li>");
+    $(".pizza").last().click(function() {
+      $("#show-pizza").show();
+      $(".pizza-size").text(newPizza.pizzaSize);
+      $(".toppings-list").text(arrayToString(newPizza.toppings));
+      $(".premium-list").text(arrayToString(newPizza.premiumToppings));
+      $(".pizza-crust").text(newPizza.crust);
+      $(".pizza-price").text("$" + newPizza.price().toFixed(2));
+    });
+
+    $("input#pizza-name").val("");
+    $("input.regular").attr('checked', false);
+    $("input.premium").attr('checked', false);
+
+
+  });
+});

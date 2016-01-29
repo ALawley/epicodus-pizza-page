@@ -6,3 +6,16 @@ h1 {
   text-align: center;
   margin-bottom: 30px;
 }
+
+#show-pizza {
+  display: none;
+}
+
+.pizza {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.pizza:hover {
+  text-decoration: underline;
+}
