@@ -1,3 +1,8 @@
+function Order() {
+  this.total = 0;
+  this.pizzas = 0;
+}
+
 function Pizza(pizzaName, pizzaSize, toppings, premiumToppings, crust) {
   this.pizzaName = pizzaName;
   this.pizzaSize = pizzaSize;
@@ -60,6 +65,7 @@ var arrayToString = function(array) {
 }
 
 $(document).ready(function() {
+  var newOrder = new Order();
   $("form#orderform").submit(function(event) {
     event.preventDefault();
     var name = $("input#pizza-name").val();
@@ -73,6 +79,9 @@ $(document).ready(function() {
     } else {
       var newPizza = new Pizza(name, size, toppings, premium, crust);
 
+      newOrder.total += newPizza.price();
+      newOrder.pizzas += 1;
+
       $("ul#pizzas").append("<li><span class='pizza'>" + newPizza.pizzaName + " - $" + newPizza.price().toFixed(2) +  "</span></li>");
       $(".pizza").last().click(function() {
         $("#show-pizza").show();
@@ -82,6 +91,9 @@ $(document).ready(function() {
         $(".pizza-crust").text(newPizza.crust + " Crust");
         $(".pizza-price").text("$" + newPizza.price().toFixed(2));
       });
+
+      $(".order-count").text(newOrder.pizzas);
+      $(".order-total").text("$" + newOrder.total.toFixed(2));
 
       $("input#pizza-name").val("");
       $("input.regular").attr('checked', false);

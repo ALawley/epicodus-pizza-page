@@ -1,3 +1,11 @@
+describe('Order', function() {
+  it("creates a new Order object with properties for total and pizzas, both starting at 0.", function () {
+    var testOrder = new Order();
+    expect(testOrder.total).to.equal(0);
+    expect(testOrder.pizzas).to.equal(0);
+  });
+});
+
 describe('Pizza', function() {
   it("creates a new Pizza object with properties for name, size. topping numbers, and crust type", function() {
     var testPizza = new Pizza("test", "Large", ["Roasted Garlic", "Red Pepper", "Sausage"], ["Pesto", "Calabrian Chili"], "Classic");
