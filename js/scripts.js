@@ -2,7 +2,9 @@ function Pizza(pizzaName, pizzaSize, toppings, premiumToppings, crust) {
   this.pizzaName = pizzaName;
   this.pizzaSize = pizzaSize;
   this.toppings = toppings;
+  this.toppingnum = this.toppings.length
   this.premiumToppings = premiumToppings;
+  this.premiumnum = this.premiumToppings.length
   this.crust = crust;
 }
 
@@ -19,9 +21,9 @@ Pizza.prototype.price = function() {
     sizePrice = 18;
   } else {}
   if (this.pizzaSize === "small" || this.pizzaSize === "medium") {
-    toppingPrice = this.toppings * 1 + this.premiumToppings * 2;
+    toppingPrice = this.toppingnum * 1 + this.premiumnum * 2;
   } else if (this.pizzaSize === "large") {
-    toppingPrice = this.toppings * 1.5 + this.premiumToppings * 3;
+    toppingPrice = this.toppingnum * 1.5 + this.premiumnum * 3;
   } else {}
   if (this.crust === "classic") {
 
