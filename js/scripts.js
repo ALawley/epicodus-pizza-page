@@ -1,8 +1,12 @@
+// Business logic
+
+// Creates an order object to track all pizzas in the order.
 function Order() {
   this.total = 0;
   this.pizzas = 0;
 }
 
+// Creates a pizza object
 function Pizza(pizzaName, pizzaSize, toppings, premiumToppings, crust) {
   this.pizzaName = pizzaName;
   this.pizzaSize = pizzaSize;
@@ -13,6 +17,7 @@ function Pizza(pizzaName, pizzaSize, toppings, premiumToppings, crust) {
   this.crust = crust;
 }
 
+// Calculates the price of a pizza, accounting for its size, toppings, and crust.
 Pizza.prototype.price = function() {
   var pizzaPrice = 0;
   var sizePrice = 0;
@@ -39,6 +44,9 @@ Pizza.prototype.price = function() {
   return pizzaPrice;
 }
 
+// UI logic
+
+// puts every checked regular topping into an array
 var getToppings = function() {
   var allToppings = [];
   $(".regular:checked").each(function() {
@@ -47,6 +55,7 @@ var getToppings = function() {
   return allToppings;
 }
 
+// puts every checked premium topping into an array
 var getPremium = function() {
   var allPremium = [];
   $(".premium:checked").each(function() {
@@ -55,6 +64,7 @@ var getPremium = function() {
   return allPremium;
 }
 
+// turns an array into a neatly spaced string for listing toppings
 var arrayToString = function(array) {
   var outputString = "";
   array.forEach(function(element) {
@@ -64,32 +74,29 @@ var arrayToString = function(array) {
   return outputString;
 }
 
-var stringToArray = function(str) {
-  return str.split(" ");
-}
-
-var textGrab = function(element) {
-  return $(element).text();
-}
-
 $(document).ready(function() {
-  var newOrder = new Order();
+  var newOrder = new Order(); // creates a new order for the page
   $("form#orderform").submit(function(event) {
     event.preventDefault();
+    // gets input from page, including running the functions for the toppings
     var name = $("input#pizza-name").val();
     var size = $('input:radio[name="sizeradio"]:checked').val();
     var toppings = getToppings();
     var premium = getPremium();
     var crust = $('input:radio[name="crustradio"]:checked').val();
+    // checks to make sure user input a name for their pizza
     if (name === "") {
       alert("Please enter a name for your pizza.")
       return;
     } else {
+      // feeds user input into the Pizza constructor to add a new pizza and increments Order accordingly.
       var newPizza = new Pizza(name, size, toppings, premium, crust);
       newOrder.total += newPizza.price();
       newOrder.pizzas += 1;
 
+      // adds new pizza to the list of pizzas
       $("ul#pizzas").append("<li class='pizza'><span>" + newPizza.pizzaName + " - $" + newPizza.price().toFixed(2) +  "</span></li>");
+      // when a pizza is clicked in the list, it gets the "active" class and all others lose the "active" class and we display its info.
       $(".pizza").last().click(function() {
         $(this).addClass("active").siblings().removeClass("active");
         $("#show-pizza").show();
@@ -99,15 +106,16 @@ $(document).ready(function() {
         $(".pizza-crust").text(newPizza.crust + " Crust");
         $(".pizza-price").text("$" + newPizza.price().toFixed(2));
       });
-
+      // print order total info
       $(".order-count").text(newOrder.pizzas);
       $(".order-total").text("$" + newOrder.total.toFixed(2));
-
+      // clear the name and topping checkbox inputs
       $("input#pizza-name").val("");
       $("input.regular").attr('checked', false);
       $("input.premium").attr('checked', false);
     }
   });
+  // when the remove pizza button is clicked, we delete the active pizza from the list, remove 1 pizza from the order, decrease the total by the active pizza's listed price, update the order info and hide the pizza info section.
   $("#pizza-remove").click(function() {
     $(".active").remove();
     newOrder.pizzas -= 1;
