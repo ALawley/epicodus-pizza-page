@@ -7,14 +7,15 @@ function Pizza(pizzaSize, toppings, premiumToppings, crust) {
 
 Pizza.prototype.price = function() {
   var pizzaPrice = 0;
+  var sizePrice = 0;
   var toppingPrice = 0;
   var crustPrice = 0;
   if (this.pizzaSize === "Small") {
-    pizzaPrice = 12;
+    sizePrice = 12;
   } else if (this.pizzaSize === "Medium") {
-    pizzaPrice = 14;
+    sizePrice = 14;
   } else if (this.pizzaSize === "Large") {
-    pizzaPrice = 18;
+    sizePrice = 18;
   } else {}
   if (this.pizzaSize === "Small" || this.pizzaSize === "Medium") {
     toppingPrice = this.toppings * 1 + this.premiumToppings * 2;
@@ -26,6 +27,6 @@ Pizza.prototype.price = function() {
   } else {
     crustPrice = 2;
   }
-  pizzaPrice = pizzaPrice + toppingPrice;
+  pizzaPrice = sizePrice + toppingPrice + crustPrice;
   return pizzaPrice;
 }
