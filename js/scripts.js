@@ -13,19 +13,19 @@ Pizza.prototype.price = function() {
   var sizePrice = 0;
   var toppingPrice = 0;
   var crustPrice = 0;
-  if (this.pizzaSize === "small") {
+  if (this.pizzaSize === "Small") {
     sizePrice = 12;
-  } else if (this.pizzaSize === "medium") {
+  } else if (this.pizzaSize === "Medium") {
     sizePrice = 14;
-  } else if (this.pizzaSize === "large") {
+  } else if (this.pizzaSize === "Large") {
     sizePrice = 18;
   } else {}
-  if (this.pizzaSize === "small" || this.pizzaSize === "medium") {
+  if (this.pizzaSize === "Small" || this.pizzaSize === "Medium") {
     toppingPrice = this.toppingnum * 1 + this.premiumnum * 2;
-  } else if (this.pizzaSize === "large") {
+  } else if (this.pizzaSize === "Large") {
     toppingPrice = this.toppingnum * 1.5 + this.premiumnum * 3;
   } else {}
-  if (this.crust === "classic") {
+  if (this.crust === "Classic") {
 
   } else {
     crustPrice = 2;
@@ -79,7 +79,7 @@ $(document).ready(function() {
         $(".pizza-size").text(newPizza.pizzaSize);
         $(".toppings-list").text(arrayToString(newPizza.toppings));
         $(".premium-list").text(arrayToString(newPizza.premiumToppings));
-        $(".pizza-crust").text(newPizza.crust);
+        $(".pizza-crust").text(newPizza.crust + " Crust");
         $(".pizza-price").text("$" + newPizza.price().toFixed(2));
       });
 
