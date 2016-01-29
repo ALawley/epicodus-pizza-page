@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-1.12.0.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Pizza!</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Anna's Pizzeria</h1>
+      <form id="orderform">
+        <div class="form-group">
+              <label for="pizza-name">Pizza name:</label>
+              <input type="text" class="form-control" id="pizza-name">
+            </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div id="Size">
+              <h3>Select a size:</h3>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="sizeradio" id="small" value="small">
+                  Small - $12
+                </label>
+              </div>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="sizeradio" id="medium" value="medium">
+                  Medium - $14
+                </label>
+              </div>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="sizeradio" id="large" value="large">
+                  Large - $18
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="toppings">
+              <h3>Regular toppings:</h3>
+              <p>$1, or $1.50 for large
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="spinach">Spinach</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="olives">Olives</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="red onion">Red Onion</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="roasted garlic">Roasted Garlic</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="mushrooms">Mushrooms</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="pineapple">Pineapple</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="tomato">Tomato</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="cilantro">Cilantro</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="feta">Feta</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="red pepper">Red Pepper</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="jalapeno">Jalapeno</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="Ricotta">Ricotta</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="feta">Feta</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="cheddar">Cheddar</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="sausage">Sausage</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="Pepperoni">Pepperoni</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="chicken">Chicken</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="Pepperoni">Pepperoni</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="ham">Ham</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="bacon">Bacon</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="regular" value="anchovies">Anchovies</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="premium">
+              <h3>Premium Toppings</h3>
+              <p>$2, or $3 for large</p>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="pesto">Pesto</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="San Daniele prosciutto">San Daniele Prosciutto</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="chorizo">Spanish Chorizo</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="shrimp">Shrimp</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="clams">Clams</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="avocado">Avocado</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="sun-dried tomato">Sun-Dried Tomato</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="truffle oil">Truffle Oil</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="Calabrian chili">Calabrian Chili</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="premium" value="vegan cheese">Vegan Cheese</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="crust">
+              <h3>Choose your crust:</h3>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="crustradio" id="classic" value="classic">
+                  Classic - no charge
+                </label>
+              </div>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="crustradio" id="wholegrain" value="whole grain beer">
+                  Whole Grain Beer Crust - $2
+                </label>
+              </div>
+              <div class="radio" >
+                <label>
+                  <input type="radio" name="crustradio" id="gf" value="gluten free">
+                  Gluten Free Crust - $2
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add pizza</button>
+      </form>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Pizzas added:</h2>
+          <ul id="pizzas">
+
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div id="show-pizza">
+            <h2></h2>
+
+            <p>Pizza name: <span class="pizza-name"></span></p>
+            <p>Size: <span class="pizza-size"></span></p>
+            <p>Toppings: <span class="toppings-list"></span></p>
+            <p>Premium toppings: <span class="premium-list"></span></p>
+            <p>Crust: <span class="pizza-crust"></span></p>
+            <p>Price: <span class="pizza-price"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -11,19 +11,19 @@ Pizza.prototype.price = function() {
   var sizePrice = 0;
   var toppingPrice = 0;
   var crustPrice = 0;
-  if (this.pizzaSize === "Small") {
+  if (this.pizzaSize === "small") {
     sizePrice = 12;
-  } else if (this.pizzaSize === "Medium") {
+  } else if (this.pizzaSize === "medium") {
     sizePrice = 14;
-  } else if (this.pizzaSize === "Large") {
+  } else if (this.pizzaSize === "large") {
     sizePrice = 18;
   } else {}
-  if (this.pizzaSize === "Small" || this.pizzaSize === "Medium") {
+  if (this.pizzaSize === "small" || this.pizzaSize === "medium") {
     toppingPrice = this.toppings * 1 + this.premiumToppings * 2;
-  } else if (this.pizzaSize === "Large") {
+  } else if (this.pizzaSize === "large") {
     toppingPrice = this.toppings * 1.5 + this.premiumToppings * 3;
   } else {}
-  if (this.crust === "Classic") {
+  if (this.crust === "classic") {
 
   } else {
     crustPrice = 2;
